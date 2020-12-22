@@ -8,7 +8,7 @@ class UserController {
 
   async show ({ params }) {
     const user = await User.findOrFail(params.id)
-    await user.load('typeUser') // para buscar o relacionamento user -> typeUser na tabela e trazer na resposta
+    await user.loadMany(['typeUser', 'permissions', 'roles']) // para buscar o relacionamento user -> typeUser na tabela e trazer na resposta
     return user
   }
 
