@@ -18,6 +18,13 @@ class User extends Model {
     })
   }
 
+  static get traits () {
+    return [
+      '@provider:Adonis/Acl/HasRole',
+      '@provider:Adonis/Acl/HasPermission'
+    ]
+  }
+
   client () {
     return this.hasOne('App/Models/Client')
   }
